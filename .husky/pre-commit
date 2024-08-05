@@ -1,5 +1,4 @@
-#!/bin/sh
-. "$(dirname "$0")/_/husky.sh"
-
-# Rodar os testes do Laravel
-./vendor/bin/phpunit
+npm run build
+./vendor/bin/pest
+./vendor/bin/phpstan
+./vendor/bin/pint
