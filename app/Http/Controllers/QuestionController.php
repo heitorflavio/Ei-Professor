@@ -33,7 +33,7 @@ class QuestionController extends Controller
     {
         $question = Question::create($request->validated());
 
-        return redirect()->route('question.index');
+        return redirect()->route('dashboard');
     }
 
     /**

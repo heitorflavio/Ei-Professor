@@ -2,9 +2,9 @@
 
 namespace App\Http\Requests;
 
+use App\Rules\QuestionMark;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;
-use App\Rules\QuestionMark;
 
 class StoreQuestionRequest extends FormRequest
 {
@@ -24,7 +24,7 @@ class StoreQuestionRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'question' => ['required', 'string', 'min:10' , new QuestionMark],
+            'question' => ['required', 'string', 'min:10', new QuestionMark],
         ];
     }
 }
