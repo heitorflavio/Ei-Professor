@@ -14,8 +14,8 @@ class QuestionMark implements ValidationRule
      */
     public function validate(string $attribute, mixed $value, Closure $fail): void
     {
-        if ($value[strlen($value)-1] != '?') {
-            $fail("The :attribute must not contain a question mark.");
+        if ($value[strlen($value) - 1] != '?') {
+            $fail('The :attribute must not contain a question mark.');
         }
     }
 }
