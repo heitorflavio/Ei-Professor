@@ -34,3 +34,18 @@ it('should have at least 10 characters', function () {
     $request->assertSessionHasErrors(['question' => __('validation.min.string', ['attribute' => 'question', 'min' => 10])]);
     \Pest\Laravel\assertDatabaseCount('questions', 0);
 });
+
+it('shoulf check if ends with a question mark', function () {
+    // Arrange :: preparar
+    $user = User::factory()->create();
+    $this->actingAs($user);
+
+    // Act :: agir
+    $request = $this->post(route('question.store'), [
+        'question' => str_repeat('*', 10),
+    ]);
+
+    // Assert :: verificar
+    $request->assertSessionHasErrors(['question' => 'The question must not contain a question mark.']);
+    \Pest\Laravel\assertDatabaseCount('questions', 0);
+});
