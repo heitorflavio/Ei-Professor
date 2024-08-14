@@ -25,6 +25,18 @@
                 <button type="submit"
                     class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Send</button>
             </form>
+
+            <hr class="border-gray-700 border-dashed my-4"> 
+
+            <div class="grid grid-cols-1 gap-4">
+                @foreach ($questions as $question)
+                    <div class="bg-white dark:bg-gray-800 shadow overflow-hidden sm:rounded-lg">
+                        <div class="px-4 py-5 sm:px-6">
+                            <h3 class="text-lg font-medium text-gray-900 dark:text-white">{{ $question->question }}</h3>
+                        </div>
+                    </div>
+                @endforeach
+
         </div>
     </div>
 </x-app-layout>
