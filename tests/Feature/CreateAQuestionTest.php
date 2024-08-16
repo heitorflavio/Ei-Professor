@@ -49,3 +49,15 @@ it('shoulf check if ends with a question mark', function () {
     $request->assertSessionHasErrors(['question' => 'The question must not contain a question mark.']);
     \Pest\Laravel\assertDatabaseCount('questions', 0);
 });
+
+it('should check if the user can access the dashboard', function () {
+    // Arrange :: preparar
+    $user = User::factory()->create();
+    $this->actingAs($user);
+
+    // Act :: agir
+    $request = $this->get(route('dashboard'));
+
+    // Assert :: verificar
+    $request->assertOk();
+});
