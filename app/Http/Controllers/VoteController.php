@@ -14,8 +14,8 @@ class VoteController extends Controller
     public function __invoke(Request $request, Question $question): \Illuminate\Http\RedirectResponse
     {
         /** @var User $user */
-       $user = auth()->user();
-       $user->like($question);
+        $user = auth()->user();
+        $user->like($question);
 
         return redirect()->route('dashboard');
     }
