@@ -17,6 +17,6 @@ class VoteLikeController extends Controller
         $user = auth()->user();
         $user->like($question);
 
-        return redirect()->route('dashboard');
+        return back();
     }
 }

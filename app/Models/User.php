@@ -65,6 +65,7 @@ class User extends Authenticatable implements MustVerifyEmail
             'question_id' => $question->id,
         ], [
             'like' => 1,
+            'unlike' => 0,
         ]);
     }
 
@@ -74,6 +75,7 @@ class User extends Authenticatable implements MustVerifyEmail
             'question_id' => $question->id,
         ], [
             'unlike' => 1,
+            'like' => 0,
         ]);
     }
 }

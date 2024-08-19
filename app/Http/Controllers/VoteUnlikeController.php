@@ -17,6 +17,6 @@ class VoteUnlikeController extends Controller
         $user = auth()->user();
         $user->unlike($question);
 
-        return redirect()->route('dashboard');
+        return back();
     }
 }
