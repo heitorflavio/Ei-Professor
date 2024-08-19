@@ -41,8 +41,7 @@
                                         <x-icons.thumbs-down id="thumbs-down"
                                             class="w-5 h-5 text-gray-300 hover:text-gray-600 cursor-pointer" />
                                         <span class="text-red-600">
-
-                                            {{ $question->unlikes }}
+                                            {{ $question->votes_sum_unlike ?: 0 }}
                                         </span>
                                     </button>
                                 </form>
@@ -53,7 +52,7 @@
                                         <x-icons.thumbs-up id="thumbs-up"
                                             class="w-5 h-5 text-gray-300 hover:text-gray-600 cursor-pointer" />
                                         <span class="text-green-600">
-                                            {{ $question->likes }}
+                                            {{ $question->votes_sum_like ?: 0 }}
                                         </span>
                                     </button>
                                 </form>
@@ -61,7 +60,10 @@
                         </div>
                     </div>
                 @endforeach
-
+                {{-- paginate --}}
+                <div class="mt-4">
+                    {{ $questions->links() }}
+                </div>
             </div>
         </div>
 </x-app-layout>
