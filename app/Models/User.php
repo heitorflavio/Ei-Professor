@@ -48,4 +48,32 @@ class User extends Authenticatable implements MustVerifyEmail
             'password' => 'hashed',
         ];
     }
+
+    /**
+     * Get the questions for the user.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany<Vote>
+     */
+    public function votes(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(Vote::class);
+    }
+
+    public function like(Question $question): void
+    {
+        $this->votes()->updateOrCreate([
+            'question_id' => $question->id,
+        ], [
+            'like' => 1,
+        ]);
+    }
+
+    public function unlike(Question $question): void
+    {
+        $this->votes()->updateOrCreate([
+            'question_id' => $question->id,
+        ], [
+            'unlike' => 1,
+        ]);
+    }
 }
