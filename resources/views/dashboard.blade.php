@@ -26,17 +26,41 @@
                     class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Send</button>
             </form>
 
-            <hr class="border-gray-700 border-dashed my-4"> 
+            <hr class="border-gray-700 border-dashed my-4">
 
             <div class="grid grid-cols-1 gap-4">
                 @foreach ($questions as $question)
                     <div class="bg-white dark:bg-gray-800 shadow overflow-hidden sm:rounded-lg">
-                        <div class="px-4 py-5 sm:px-6">
+                        <div class="px-4 py-5 sm:px-6 flex justify-between">
                             <h3 class="text-lg font-medium text-gray-900 dark:text-white">{{ $question->question }}</h3>
+                            <div class="flex space-x-2">
+                                <form :action="route('question.like', $question - > id)" method="POST">
+                                    @csrf
+                                    <button type="button">
+                                        <x-icons.thumbs-down id="thumbs-down"
+                                            class="w-5 h-5 text-gray-300 hover:text-gray-600 cursor-pointer" />
+                                        <span class="text-red-600">
+
+                                            {{ $question->unlikes }}
+                                        </span>
+                                    </button>
+                                </form>
+                                <form action="{{ route('vote.store', $question) }}" method="POST">
+                                    @csrf
+                                    @method('POST')
+                                    <button type="submit">
+                                        <x-icons.thumbs-up id="thumbs-up"
+                                            class="w-5 h-5 text-gray-300 hover:text-gray-600 cursor-pointer" />
+                                        <span class="text-green-600">
+                                            {{ $question->likes }}
+                                        </span>
+                                    </button>
+                                </form>
+                            </div>
                         </div>
                     </div>
                 @endforeach
 
+            </div>
         </div>
-    </div>
 </x-app-layout>
