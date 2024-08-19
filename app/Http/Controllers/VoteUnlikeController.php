@@ -6,7 +6,7 @@ use App\Models\Question;
 use App\Models\User;
 use Illuminate\Http\Request;
 
-class VoteController extends Controller
+class VoteUnlikeController extends Controller
 {
     /**
      * Handle the incoming request.
@@ -15,7 +15,7 @@ class VoteController extends Controller
     {
         /** @var User $user */
         $user = auth()->user();
-        $user->like($question);
+        $user->unlike($question);
 
         return redirect()->route('dashboard');
     }

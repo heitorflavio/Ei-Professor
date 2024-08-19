@@ -30,7 +30,7 @@ class Question extends Model
         return new Attribute(fn () => $this->votes()->sum('like'));
     }
 
-     /**
+    /**
      * @return Attribute<Question, never>
      */
     public function unlikes(): Attribute

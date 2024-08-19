@@ -34,9 +34,10 @@
                         <div class="px-4 py-5 sm:px-6 flex justify-between">
                             <h3 class="text-lg font-medium text-gray-900 dark:text-white">{{ $question->question }}</h3>
                             <div class="flex space-x-2">
-                                <form :action="route('question.like', $question - > id)" method="POST">
+                                <form action="{{ route('vote.unlike', $question) }}" method="POST">
                                     @csrf
-                                    <button type="button">
+                                    @method('POST')
+                                    <button type="submit">
                                         <x-icons.thumbs-down id="thumbs-down"
                                             class="w-5 h-5 text-gray-300 hover:text-gray-600 cursor-pointer" />
                                         <span class="text-red-600">
@@ -45,7 +46,7 @@
                                         </span>
                                     </button>
                                 </form>
-                                <form action="{{ route('vote.store', $question) }}" method="POST">
+                                <form action="{{ route('vote.like', $question) }}" method="POST">
                                     @csrf
                                     @method('POST')
                                     <button type="submit">

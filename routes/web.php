@@ -3,6 +3,8 @@
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\QuestionController;
+use App\Http\Controllers\VoteLikeController;
+use App\Http\Controllers\VoteUnlikeController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -23,7 +25,8 @@ Route::middleware('auth')->group(function () {
     // Questions
     Route::resource('question', QuestionController::class);
     // Votes
-    Route::post('/vote/{question}', \App\Http\Controllers\VoteController::class)->name('vote.store');
+    Route::post('/vote/like/{question}', VoteLikeController::class)->name('vote.like');
+    Route::post('/vote/unlike/{question}', VoteUnlikeController::class)->name('vote.unlike');
 });
 
 require __DIR__.'/auth.php';
